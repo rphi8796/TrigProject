@@ -2,7 +2,6 @@ package trig.controller;
 
 import trig.model.Triangle;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 public class TrigController
