@@ -10,6 +10,7 @@ public class TrigController
 	private Triangle isos;
 	private Triangle right;
 	private ArrayList<Triangle> triangleList;
+	private Triangle[] triangleArray;
 	
 	public TrigController()
 	{
@@ -17,6 +18,7 @@ public class TrigController
 		isos = new Triangle(3.0, 3.0, 5.0);
 		right = new Triangle(3.0, 4.0, 5.0);
 		triangleList = new ArrayList<Triangle>();
+		triangleArray = new Triangle[2];
 	}
 	
 	public void buildTheList()
@@ -24,6 +26,10 @@ public class TrigController
 		triangleList.add(equal);
 		triangleList.add(isos);
 		triangleList.add(right);
+		
+		triangleArray[0] = equal;
+		triangleArray[1] = isos;
+		triangleArray[2] = right;
 	}
 	
 	
@@ -39,6 +45,11 @@ public class TrigController
 		for (int i = 0; i < triangleList.size(); i += 1)
 		{
 			JOptionPane.showMessageDialog(null, calculateAngleC(triangleList.get(i)));
+		}
+		
+		for (Triangle triangles : triangleArray)
+		{
+			JOptionPane.showMessageDialog(null, calculateAngleC(triangles));
 		}
 		
 	}
