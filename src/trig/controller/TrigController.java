@@ -2,6 +2,8 @@ package trig.controller;
 
 import trig.model.Triangle;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TrigController
@@ -11,6 +13,7 @@ public class TrigController
 	private Triangle right;
 	private ArrayList<Triangle> triangleList;
 	private Triangle[] triangleArray;
+	private ImageIcon[] icons;
 	
 	public TrigController()
 	{
@@ -18,40 +21,33 @@ public class TrigController
 		isos = new Triangle(3.0, 3.0, 5.0);
 		right = new Triangle(3.0, 4.0, 5.0);
 		triangleList = new ArrayList<Triangle>();
-		triangleArray = new Triangle[2];
+		triangleArray = new Triangle[6];
+		icons = new ImageIcon[6];
+		
+		for (int index = 0; index < triangleArray.length; index += 1)
+		{	
+			icons[index] = new ImageIcon(getClass().getResource("/trig/view/images/Triangle.png"));
+		}
 	}
 	
-	public void buildTheList()
+	public void buildTriangleList()
 	{
-		triangleList.add(equal);
-		triangleList.add(isos);
-		triangleList.add(right);
-		
-		triangleArray[0] = equal;
-		triangleArray[1] = isos;
-		triangleArray[2] = right;
+		for (int index = 0; index < triangleArray.length; index += 1)
+		{
+			double i = index + 1;
+			triangleArray[index] = new Triangle(i, i, i);
+		}
 	}
 	
 	
 	public void start()
 	{
-		buildTheList();
-		
-		for (Triangle triangles : triangleList)
-		{
-			JOptionPane.showMessageDialog(null, calculateAngleC(triangles));
-		}
-		
-		for (int i = 0; i < triangleList.size(); i += 1)
-		{
-			JOptionPane.showMessageDialog(null, calculateAngleC(triangleList.get(i)));
-		}
+		buildTriangleList();
 		
 		for (Triangle triangles : triangleArray)
 		{
 			JOptionPane.showMessageDialog(null, calculateAngleC(triangles));
-		}
-		
+		}	
 	}
 	
 	public String calculateAngleC(Triangle triangle)
